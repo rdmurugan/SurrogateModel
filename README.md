@@ -1,17 +1,20 @@
-# Surrogate Model Platform
+# 🚀 Surrogate Model Platform
 
-A cloud-based SaaS platform for engineering surrogate modeling that helps companies reduce computational costs and accelerate design cycles by replacing expensive FEA/CFD simulations with fast, accurate surrogate models.
+> **Advanced Active Learning & Adaptive Sampling for Engineering Simulations**
 
-## 🚀 Features
+A comprehensive cloud-based SaaS platform that reduces simulation costs by **70-80%** through intelligent data collection and surrogate modeling. Features cutting-edge active learning algorithms, physics-informed sampling, and multi-fidelity modeling for engineering applications.
 
-- **Data Upload & Management**: Support for CSV/Excel simulation datasets
-- **Multi-Algorithm Support**: Gaussian Process, Neural Networks, Polynomial Chaos, Random Forest
-- **Fast Predictions**: Sub-second prediction response times
-- **Uncertainty Quantification**: Confidence intervals and statistical analysis
-- **Multi-Tenant Architecture**: Secure isolation for multiple customers
-- **Role-Based Access Control**: Admin, Engineer, Viewer, and API user roles
-- **RESTful API**: Full platform functionality via API
-- **Modern Web Interface**: React-based dashboard with Material-UI
+## 🎯 Key Features
+
+- **🧠 Intelligent Active Learning**: Adaptive sampling strategies with physics-informed constraints
+- **⚡ Multi-Fidelity Modeling**: Combines low and high-fidelity simulations efficiently
+- **🔄 Real-Time Adaptation**: Dynamic strategy switching based on model performance
+- **🛡️ Enterprise Security**: JWT authentication with multi-tenant isolation
+- **📊 Advanced Analytics**: Uncertainty quantification and convergence monitoring
+- **🚀 Scalable Architecture**: Async processing with Docker containerization
+- **🎯 Smart Acquisition**: Expected Improvement, UCB, Knowledge Gradient functions
+- **⚙️ Physics Integration**: Domain knowledge and conservation laws
+- **📈 Budget Optimization**: Cost-aware sampling with resource tracking
 
 ## 🏗️ Architecture
 
@@ -260,10 +263,24 @@ npm test
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under a **Custom License** for personal and research use:
 
-## 🆘 Support
+- ✅ **Free for personal use** and research
+- ✅ **Open source contributions** welcome
+- ✅ **Academic and educational** use permitted
+- 🏢 **Commercial use** requires separate license
 
-- Documentation: See `/docs` folder
-- Issues: GitHub Issues
-- API Documentation: http://localhost:8000/docs
+For commercial licensing, enterprise support, or custom development:
+**📧 Contact: durai@infinidatum.net**
+
+See the [LICENSE](LICENSE) file for complete terms and conditions.
+
+## 🆘 Support & Contact
+
+- **📚 Documentation**: See `/docs` folder and http://localhost:8000/docs
+- **🐛 Issues**: GitHub Issues for bugs and feature requests
+- **💼 Commercial Licensing**: durai@infinidatum.net
+- **🤝 Enterprise Support**: durai@infinidatum.net
+- **🔧 Custom Development**: durai@infinidatum.net
+
+For any questions about licensing, commercial use, or custom implementations, please reach out to **durai@infinidatum.net**.

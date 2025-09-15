@@ -1,0 +1,61 @@
+Surrogate Model Platform License
+
+Copyright (c) 2024 Durai (durai@infinidatum.net)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to use,
+copy, modify, and distribute the Software for personal and research purposes,
+subject to the following conditions:
+
+PERSONAL AND RESEARCH USE LICENSE
+
+1. PERMITTED USES:
+   - Personal use and learning
+   - Academic research and education
+   - Non-commercial experimentation
+   - Open source contributions and improvements
+
+2. COMMERCIAL USE RESTRICTIONS:
+   For any commercial use, including but not limited to:
+   - Use in commercial products or services
+   - Integration into commercial software
+   - Use by commercial entities for business purposes
+   - Monetization of the Software or derivative works
+
+   You must obtain a separate commercial license by contacting:
+   durai@infinidatum.net
+
+3. CONDITIONS FOR ALL USES:
+   - The above copyright notice and this permission notice shall be included
+     in all copies or substantial portions of the Software
+   - Any modifications or derivative works must clearly indicate the changes made
+   - Attribution to the original author must be maintained
+
+4. DISCLAIMER:
+   THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+   FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+   AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+   LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+   OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+   SOFTWARE.
+
+5. TERMINATION:
+   This license automatically terminates if you violate any of its terms.
+   Commercial use without proper licensing constitutes a violation.
+
+6. CONTACT:
+   For commercial licensing inquiries, custom development, or enterprise support:
+   Email: durai@infinidatum.net
+
+   For questions about permitted uses under this license, please contact the
+   author before proceeding with your intended use.
+
+---
+
+NOTICE: This software implements advanced active learning algorithms for
+surrogate modeling. The techniques and implementations may be subject to
+additional patent protections. Users are responsible for ensuring compliance
+with all applicable intellectual property laws.
+
+Last updated: September 2024

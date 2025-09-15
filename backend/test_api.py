@@ -326,6 +326,12 @@ def test_active_learning_api():
     print("• Model predictions with uncertainty")
     print("• Budget and resource management")
     print("• Intelligent convergence detection")
+    print("")
+    print("📄 License Notice:")
+    print("This software is free for personal and research use.")
+    print("For commercial use, contact: durai@infinidatum.net")
+    print("")
+    print("🚀 Ready to revolutionize your simulation workflows!")
 
 if __name__ == "__main__":
     test_active_learning_api()
