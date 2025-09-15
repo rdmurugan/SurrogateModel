@@ -1,6 +1,24 @@
+<div align="center">
+
 # 🚀 Surrogate Model Platform
 
 > **Advanced Active Learning & Adaptive Sampling for Engineering Simulations**
+
+![Python](https://img.shields.io/badge/python-v3.11+-blue.svg)
+![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-009688.svg)
+![License](https://img.shields.io/badge/license-Custom-blue.svg)
+![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
+
+![scikit-learn](https://img.shields.io/badge/scikit--learn-%23F7931E.svg?style=flat&logo=scikit-learn&logoColor=white)
+![PyTorch](https://img.shields.io/badge/PyTorch-%23EE4C2C.svg?style=flat&logo=PyTorch&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)
+![PostgreSQL](https://img.shields.io/badge/postgresql-%23316192.svg?style=flat&logo=postgresql&logoColor=white)
+
+![Cost Reduction](https://img.shields.io/badge/cost%20reduction-70--80%25-success.svg)
+![Active Learning](https://img.shields.io/badge/active%20learning-enabled-brightgreen.svg)
+![Enterprise Ready](https://img.shields.io/badge/enterprise-ready-blue.svg)
+
+</div>
 
 A comprehensive cloud-based SaaS platform that reduces simulation costs by **70-80%** through intelligent data collection and surrogate modeling. Features cutting-edge active learning algorithms, physics-informed sampling, and multi-fidelity modeling for engineering applications.
 
