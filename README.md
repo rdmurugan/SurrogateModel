@@ -14,9 +14,7 @@
 ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=flat&logo=docker&logoColor=white)
 ![PostgreSQL](https://img.shields.io/badge/postgresql-%23316192.svg?style=flat&logo=postgresql&logoColor=white)
 
-![Cost Reduction](https://img.shields.io/badge/cost%20reduction-70--80%25-success.svg)
 ![Active Learning](https://img.shields.io/badge/active%20learning-enabled-brightgreen.svg)
-![Enterprise Ready](https://img.shields.io/badge/enterprise-ready-blue.svg)
 
 </div>
 
