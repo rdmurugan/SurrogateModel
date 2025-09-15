@@ -255,11 +255,23 @@ npm test
 
 ## 🤝 Contributing
 
+We welcome contributions from the engineering and ML communities! See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines.
+
+**Quick Start:**
 1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Add tests
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Make your changes and add tests
+4. Run tests: `pytest tests/ && python test_api.py`
 5. Submit a pull request
+
+**Priority Areas:**
+- 🧠 Advanced acquisition functions and sampling strategies
+- ⚡ Performance optimizations and parallelization
+- 🔧 Integration with commercial simulation tools (ANSYS, COMSOL, OpenFOAM)
+- 📊 Advanced visualization and analysis tools
+- 🏭 Industry-specific examples and benchmarks
+
+**Research Contributions:** We encourage academic contributions! Please reference original papers and include proper validation against benchmarks.
 
 ## 📄 License
 
