@@ -13,7 +13,6 @@ from .sampling_strategies import (
     BaseSampler
 )
 from .multi_fidelity import CoKrigingModel, MultiFidelityModel
-from ..algorithms.factory import ModelFactory
 
 
 class ActiveLearningService:

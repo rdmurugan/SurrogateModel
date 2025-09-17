@@ -8,7 +8,6 @@ import {
   TextField,
   Button,
   MenuItem,
-  LinearProgress,
   Alert,
   Accordion,
   AccordionSummary,
@@ -205,7 +204,7 @@ export default function Predictions() {
                 </Typography>
                 {Object.entries(prediction.output_data).map(([key, value]) => (
                   <Typography key={key} variant="body2" sx={{ mb: 1 }}>
-                    <strong>{key}:</strong> {typeof value === 'number' ? value.toFixed(4) : value}
+                    {`${key}: ${typeof value === 'number' ? value.toFixed(4) : value}`}
                   </Typography>
                 ))}
 

@@ -12,6 +12,7 @@ interface AuthContextType {
   user: User | null;
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
+  register: (email: string, password: string, fullName: string) => Promise<void>;
   logout: () => void;
   loading: boolean;
 }
@@ -23,13 +24,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    // Check for existing token and user in localStorage
     const token = localStorage.getItem('token');
-    if (token) {
-      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-      // In a real app, you'd validate the token with the server
-      const userData = localStorage.getItem('user');
-      if (userData) {
-        setUser(JSON.parse(userData));
+    const userData = localStorage.getItem('user');
+
+    if (token && userData) {
+      try {
+        const user = JSON.parse(userData);
+        axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        setUser(user);
+      } catch (error) {
+        // Clear invalid data
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
       }
     }
     setLoading(false);
@@ -37,6 +44,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const login = async (email: string, password: string) => {
     try {
+      // Demo credentials
+      if (email === 'demo@example.com' && password === 'demo123') {
+        const demoUser: User = {
+          id: 1,
+          email: 'demo@example.com',
+          full_name: 'Demo User',
+          role: 'admin'
+        };
+        const demoToken = 'demo-token-' + Date.now();
+
+        localStorage.setItem('token', demoToken);
+        localStorage.setItem('user', JSON.stringify(demoUser));
+        axios.defaults.headers.common['Authorization'] = `Bearer ${demoToken}`;
+        setUser(demoUser);
+        return;
+      }
+
+      // Real API call (fallback)
       const formData = new FormData();
       formData.append('username', email);
       formData.append('password', password);
@@ -49,7 +74,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       axios.defaults.headers.common['Authorization'] = `Bearer ${access_token}`;
       setUser(userData);
     } catch (error) {
-      throw new Error('Login failed');
+      throw new Error('Invalid email or password');
+    }
+  };
+
+  const register = async (email: string, password: string, fullName: string) => {
+    try {
+      // For demo purposes, simulate registration
+      const newUser: User = {
+        id: Date.now(),
+        email: email,
+        full_name: fullName,
+        role: 'user'
+      };
+      const token = 'token-' + Date.now();
+
+      localStorage.setItem('token', token);
+      localStorage.setItem('user', JSON.stringify(newUser));
+      axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+      setUser(newUser);
+    } catch (error) {
+      throw new Error('Registration failed');
     }
   };
 
@@ -64,6 +109,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     user,
     isAuthenticated: !!user,
     login,
+    register,
     logout,
     loading,
   };

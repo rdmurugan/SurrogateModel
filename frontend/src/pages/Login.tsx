@@ -14,9 +14,11 @@ import { useAuth } from '../services/AuthContext';
 export default function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fullName, setFullName] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login } = useAuth();
+  const [isRegister, setIsRegister] = useState(false);
+  const { login, register } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -25,10 +27,14 @@ export default function Login() {
     setError('');
 
     try {
-      await login(email, password);
+      if (isRegister) {
+        await register(email, password, fullName);
+      } else {
+        await login(email, password);
+      }
       navigate('/');
     } catch (err) {
-      setError('Invalid email or password');
+      setError(isRegister ? 'Registration failed' : 'Invalid email or password');
     } finally {
       setLoading(false);
     }
@@ -46,7 +52,7 @@ export default function Login() {
       >
         <Paper elevation={3} sx={{ padding: 4, width: '100%' }}>
           <Typography component="h1" variant="h4" align="center" gutterBottom>
-            Sign In
+            {isRegister ? 'Create Account' : 'Sign In'}
           </Typography>
           <Typography variant="body2" align="center" color="text.secondary" sx={{ mb: 3 }}>
             Welcome to Surrogate Model Platform
@@ -55,6 +61,20 @@ export default function Login() {
           {error && <Alert severity="error" sx={{ mb: 2 }}>{error}</Alert>}
 
           <Box component="form" onSubmit={handleSubmit} sx={{ mt: 1 }}>
+            {isRegister && (
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="fullName"
+                label="Full Name"
+                name="fullName"
+                autoComplete="name"
+                autoFocus={isRegister}
+                value={fullName}
+                onChange={(e) => setFullName(e.target.value)}
+              />
+            )}
             <TextField
               margin="normal"
               required
@@ -63,7 +83,7 @@ export default function Login() {
               label="Email Address"
               name="email"
               autoComplete="email"
-              autoFocus
+              autoFocus={!isRegister}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
             />
@@ -75,7 +95,7 @@ export default function Login() {
               label="Password"
               type="password"
               id="password"
-              autoComplete="current-password"
+              autoComplete={isRegister ? "new-password" : "current-password"}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
@@ -86,7 +106,22 @@ export default function Login() {
               sx={{ mt: 3, mb: 2 }}
               disabled={loading}
             >
-              {loading ? 'Signing In...' : 'Sign In'}
+              {loading ? (isRegister ? 'Creating Account...' : 'Signing In...') : (isRegister ? 'Create Account' : 'Sign In')}
+            </Button>
+
+            <Button
+              fullWidth
+              variant="text"
+              onClick={() => {
+                setIsRegister(!isRegister);
+                setError('');
+                setEmail('');
+                setPassword('');
+                setFullName('');
+              }}
+              sx={{ mt: 1 }}
+            >
+              {isRegister ? 'Already have an account? Sign In' : 'Need an account? Sign Up'}
             </Button>
           </Box>
 

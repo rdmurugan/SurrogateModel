@@ -8,7 +8,7 @@ from datetime import datetime
 import uuid
 
 from ...ml.active_learning.service import ActiveLearningService
-from ...ml.active_learning.sampling_strategies import AdaptiveSampler, BatchActiveLearning, PhysicsInformedSampler
+from ...ml.active_learning.sampling_strategies import AdaptiveSampler, BatchActiveLearning, PhysicsInformedSampler, BaseSampler
 from ...ml.active_learning.acquisition.factory import AcquisitionFunctionFactory
 from ...models.user import User
 from ...core.auth import get_current_user
@@ -25,15 +25,15 @@ active_sessions: Dict[str, Dict[str, Any]] = {}
 # Pydantic models for request/response
 class ActiveLearningConfig(BaseModel):
     """Configuration for active learning session"""
-    model_config: Dict[str, Any] = Field(..., description="Surrogate model configuration")
+    model_config_data: Dict[str, Any] = Field(..., description="Surrogate model configuration")
     sampling_config: Optional[Dict[str, Any]] = Field(default=None, description="Sampling strategy configuration")
     budget_config: Optional[Dict[str, Any]] = Field(default=None, description="Budget and resource constraints")
     performance_config: Optional[Dict[str, Any]] = Field(default=None, description="Performance monitoring configuration")
 
-    class Config:
-        schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
-                "model_config": {
+                "model_config_data": {
                     "type": "gaussian_process",
                     "params": {
                         "kernel": "rbf",
@@ -59,6 +59,7 @@ class ActiveLearningConfig(BaseModel):
                 }
             }
         }
+    }
 
 
 class InitialData(BaseModel):
@@ -66,25 +67,27 @@ class InitialData(BaseModel):
     X: List[List[float]] = Field(..., description="Input features")
     y: List[float] = Field(..., description="Target values")
 
-    class Config:
-        schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "X": [[1.0, 2.0], [2.0, 3.0], [3.0, 4.0]],
                 "y": [1.5, 2.5, 3.5]
             }
         }
+    }
 
 
 class CandidatePoints(BaseModel):
     """Candidate points for sampling"""
     points: List[List[float]] = Field(..., description="Candidate sampling points")
 
-    class Config:
-        schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "points": [[1.5, 2.5], [2.5, 3.5], [3.5, 4.5], [4.0, 5.0]]
             }
         }
+    }
 
 
 class ActiveLearningParameters(BaseModel):
@@ -92,8 +95,8 @@ class ActiveLearningParameters(BaseModel):
     max_iterations: int = Field(default=50, ge=1, le=1000, description="Maximum AL iterations")
     convergence_criteria: Optional[Dict[str, Any]] = Field(default=None, description="Convergence criteria")
 
-    class Config:
-        schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "max_iterations": 25,
                 "convergence_criteria": {
@@ -103,6 +106,7 @@ class ActiveLearningParameters(BaseModel):
                 }
             }
         }
+    }
 
 
 class SamplingRequest(BaseModel):
@@ -112,8 +116,8 @@ class SamplingRequest(BaseModel):
     acquisition_function: Optional[str] = Field(default=None, description="Acquisition function to use")
     strategy_override: Optional[str] = Field(default=None, description="Override adaptive strategy selection")
 
-    class Config:
-        schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "candidate_points": [[1.5, 2.5], [2.5, 3.5], [3.5, 4.5]],
                 "n_samples": 2,
@@ -121,6 +125,7 @@ class SamplingRequest(BaseModel):
                 "strategy_override": "physics_informed"
             }
         }
+    }
 
 
 class ExperimentalData(BaseModel):
@@ -128,13 +133,14 @@ class ExperimentalData(BaseModel):
     X: List[List[float]] = Field(..., description="Input features from experiments")
     y: List[float] = Field(..., description="Experimental results")
 
-    class Config:
-        schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "X": [[1.5, 2.5], [2.5, 3.5]],
                 "y": [2.0, 3.0]
             }
         }
+    }
 
 
 class PredictionRequest(BaseModel):
@@ -142,13 +148,14 @@ class PredictionRequest(BaseModel):
     X: List[List[float]] = Field(..., description="Input points for prediction")
     include_uncertainty: bool = Field(default=True, description="Include uncertainty estimates")
 
-    class Config:
-        schema_extra = {
+    model_config = {
+        "json_schema_extra": {
             "example": {
                 "X": [[1.5, 2.5], [2.5, 3.5]],
                 "include_uncertainty": True
             }
         }
+    }
 
 
 class SessionResponse(BaseModel):

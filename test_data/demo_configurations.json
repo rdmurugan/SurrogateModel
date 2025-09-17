@@ -1,0 +1,124 @@
+{
+  "bayesian_neural_networks": {
+    "aerospace_optimization": {
+      "input_dim": 4,
+      "output_dim": 2,
+      "hidden_layers": [64, 32, 16],
+      "activation": "relu",
+      "ensemble_size": 10,
+      "use_mc_dropout": true,
+      "heteroscedastic": true,
+      "description": "Airfoil optimization with uncertainty quantification",
+      "inputs": ["angle_of_attack", "chord_length", "Reynolds_number", "thickness_ratio"],
+      "outputs": ["lift_coefficient", "drag_coefficient"],
+      "sample_data": "airfoil_performance.csv"
+    },
+    "structural_uncertainty": {
+      "input_dim": 5,
+      "output_dim": 2,
+      "hidden_layers": [128, 64, 32],
+      "activation": "tanh",
+      "ensemble_size": 15,
+      "use_mc_dropout": true,
+      "heteroscedastic": false,
+      "description": "Structural analysis with aleatoric and epistemic uncertainty",
+      "inputs": ["load_force", "material_young_modulus", "cross_section_area", "length", "safety_factor"],
+      "outputs": ["displacement", "stress"],
+      "sample_data": "structural_analysis.csv"
+    },
+    "thermal_modeling": {
+      "input_dim": 4,
+      "output_dim": 2,
+      "hidden_layers": [96, 48],
+      "activation": "swish",
+      "ensemble_size": 8,
+      "use_mc_dropout": false,
+      "heteroscedastic": true,
+      "description": "Heat transfer prediction with temperature-dependent uncertainty",
+      "inputs": ["temperature_inlet", "flow_rate", "thermal_conductivity", "surface_area"],
+      "outputs": ["temperature_outlet", "heat_transfer_rate"],
+      "sample_data": "heat_transfer.csv"
+    }
+  },
+  "graph_neural_networks": {
+    "mesh_analysis": {
+      "input_dim": 6,
+      "output_dim": 3,
+      "conv_type": "gcn",
+      "num_layers": 4,
+      "hidden_dim": 64,
+      "use_geometric_attention": false,
+      "task_type": "node_prediction",
+      "description": "Finite element mesh analysis for stress prediction",
+      "node_features": ["x_coordinate", "y_coordinate", "z_coordinate", "material_id", "boundary_condition", "load_magnitude"],
+      "outputs": ["stress_x", "stress_y", "stress_z"]
+    },
+    "cad_optimization": {
+      "input_dim": 8,
+      "output_dim": 4,
+      "conv_type": "gat",
+      "num_layers": 6,
+      "hidden_dim": 128,
+      "use_geometric_attention": true,
+      "task_type": "graph_prediction",
+      "description": "CAD geometry optimization with attention mechanisms",
+      "node_features": ["vertex_x", "vertex_y", "vertex_z", "curvature", "edge_length", "face_area", "volume", "surface_roughness"],
+      "outputs": ["drag_coefficient", "lift_coefficient", "manufacturing_cost", "structural_integrity"]
+    },
+    "topology_optimization": {
+      "input_dim": 4,
+      "output_dim": 2,
+      "conv_type": "sage",
+      "num_layers": 3,
+      "hidden_dim": 96,
+      "use_geometric_attention": true,
+      "task_type": "edge_prediction",
+      "description": "Structural topology optimization for weight reduction",
+      "node_features": ["load_density", "material_density", "stress_constraint", "displacement_constraint"],
+      "outputs": ["optimal_density", "compliance"]
+    }
+  },
+  "transformer_models": {
+    "optimization_sequences": {
+      "input_dim": 6,
+      "output_dim": 3,
+      "d_model": 256,
+      "nhead": 8,
+      "num_layers": 6,
+      "transformer_type": "optimization",
+      "use_feature_attention": true,
+      "description": "Multi-objective optimization with sequential decision making",
+      "sequence_features": ["iteration", "objective_1", "objective_2", "constraint_violation", "design_parameter_1", "design_parameter_2"],
+      "outputs": ["next_parameter_1", "next_parameter_2", "convergence_probability"]
+    },
+    "time_series_prediction": {
+      "input_dim": 8,
+      "output_dim": 4,
+      "d_model": 512,
+      "nhead": 16,
+      "num_layers": 8,
+      "transformer_type": "forecasting",
+      "use_feature_attention": true,
+      "description": "Engineering system performance prediction over time",
+      "sequence_features": ["timestamp", "temperature", "pressure", "flow_rate", "vibration", "efficiency", "wear_indicator", "maintenance_flag"],
+      "outputs": ["future_efficiency", "failure_probability", "maintenance_time", "performance_degradation"]
+    },
+    "multi_modal_fusion": {
+      "input_dim": 10,
+      "output_dim": 5,
+      "d_model": 384,
+      "nhead": 12,
+      "num_layers": 10,
+      "transformer_type": "multimodal",
+      "use_feature_attention": true,
+      "description": "Fusion of CAD, simulation, and experimental data",
+      "modalities": {
+        "geometric": ["vertex_count", "edge_count", "face_count"],
+        "simulation": ["max_stress", "max_displacement", "safety_factor"],
+        "experimental": ["measured_strain", "measured_deflection"],
+        "operational": ["load_history", "environment_temperature"]
+      },
+      "outputs": ["predicted_lifetime", "optimal_design_score", "manufacturing_feasibility", "cost_estimate", "performance_rating"]
+    }
+  }
+}

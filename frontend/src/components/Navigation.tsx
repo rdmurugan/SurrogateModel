@@ -53,6 +53,22 @@ export default function Navigation() {
             <Button color="inherit" component={Link} to="/predictions">
               Predictions
             </Button>
+            <Button color="inherit" component={Link} to="/nextgen-ml" sx={{
+              background: 'linear-gradient(45deg, #FF6B6B, #4ECDC4)',
+              borderRadius: '20px',
+              px: 2,
+              fontWeight: 'bold'
+            }}>
+              🚀 Next-Gen ML
+            </Button>
+            <Button color="inherit" component={Link} to="/visualizations" sx={{
+              background: 'linear-gradient(45deg, #9C27B0, #E91E63)',
+              borderRadius: '20px',
+              px: 2,
+              fontWeight: 'bold'
+            }}>
+              📊 Visualizations
+            </Button>
 
             <IconButton
               size="large"
